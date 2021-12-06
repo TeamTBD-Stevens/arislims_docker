@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+   
+{% block content %}
+
+<h1>Update Aris LIMS database from Progeny</h1>
+<h3>File upload</h3>
+<div align="left">
+    <form action="{{ url_for('updatelims', modID=modID) }}" method="post" enctype=multipart/form-data>
+        <input type="file" id="infile" name="progenyfile" required>
+        <br>
+        <input class="btn-changes" type="submit" name="updatelims" value="Update samples database">
+
+    </form>
+</div>
+{% endblock %}

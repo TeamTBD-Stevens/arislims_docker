@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+    
+{% block content %}
+<h1>Actions</h1>
+<h3>Take out samples</h3>
+<font color="red">{{ msg }}</font>
+
+<div>
+    <form action="{{ url_for('savechanges', modID = modID) }}" method="post">
+
+
+        <div class="tab">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Progeny ID</th>
+                        <th scope="col">Family ID</th>
+                        <th scope="col">Aliquot Label</th>
+                        <th scope="col">Sample Type</th>
+                        <th scope="col">Current Storage Location</th>
+                        <th scope="col">Shelf No.</th>
+                        <th scope="col">Rack Label</th>
+                        <th scope="col">Project Name</th>
+                        <th scope="col">Researcher Name</th>
+                        <th scope="col">Date Taken Out</th>
+                        <th scope="col">Collection Date</th>
+                        <th scope="col">Stock Location</th>
+                        <th scope="col">Original Shelf</th>
+                        <th scope="col">Original Rack</th>
+                        <th scope="col">Original Drawer</th>
+                        <th scope="col">Original Box</th>
+                        <th scope="col">Original Well</th>
+                        <th scope="col">Low DNA</th>
+                        <th scope="col">Depleted DNA</th>
+                        <th scope="col">Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+	
+                    {% for data in samplesData %}
+                    <tr>
+                        <td>{{ data["Progeny_ID"] }}</td>
+                        <td>{{ data["Family_ID"] }}</td>
+                        <td>{{ data["Aliquot_Label"] }}</td>
+                        <td>{{ data["Sample_Type"] }}</td>
+                        <td>{% if data["Fridge_Name"] != None %} {{ data["Fridge_Name"] }} {% endif %}</td>
+                        <td>{% if data["Shelf_No"] != None %} {{ data["Shelf_No"] }} {% endif %}</td>
+                        <td>{% if data["Rack_Label"] != None %} {{ data["Rack_Label"] }} {% endif %}</td>
+                        <td>{% if data["Project_Name"] != None %} {{ data["Project_Name"] }} {% endif %}</td>
+                        <td>{% if data["Researcher_Name"] != None %} {{ data["Researcher_Name"] }} {% endif %}</td>
+                        <td>{% if data["Date_Taken_Out"] != None %} {{ data["Date_Taken_Out"] }} {% endif %}</td>
+                        <td>{% if data["Collection_Date"] != None %} {{ data["Collection_Date"] }} {% endif %}</td>
+                        <td>{% if data["Original_Fridge"] != None %} {{ data["Original_Fridge"] }} {% endif %}</td>
+                        <td>{% if data["Original_Shelf"] != None %} {{ data["Original_Shelf"] }} {% endif %}</td>
+                        <td>{% if data["Original_Rack"] != None %} {{ data["Original_Rack"] }} {% endif %}</td>
+                        <td>{% if data["Original_Drawer"] != None %} {{ data["Original_Drawer"] }} {% endif %}</td>
+                        <td>{% if data["Original_Box"] != None %} {{ data["Original_Box"] }} {% endif %}</td>
+                        <td>{% if data["Original_Well"] != None %} {{ data["Original_Well"] }} {% endif %}</td>
+                        <td>{% if data["Low_DNA"] != None %} {{ data["Low_DNA"] }} {% endif %}</td>
+                        <td>{% if data["Depleted_DNA"] != None %} {{ data["Depleted_DNA"] }} {% endif %}</td>
+                        <td title="{{ data['comments'] }}">{% if data["comments"] != None %} {{ data["comments"] }} {% endif %}</td>
+
+                        <td>
+                            <input type="checkbox" class="hidden" name="DEL" value="{{ data['id']}}">&nbsp;<br>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!--Fridges dropdown menu-->
+        <label for="fridges" class="action-label"><b>Storage Location</b></label>
+        <select id="fridges" class="fridges" name="fridgechange" title="fridge">
+            {% for fridge in fridgesData %}
+            <option name="fridge" value="{{ fridge }}">{{fridge}}</option>
+            {% endfor %}
+        </select>
+
+
+        <label for="Project Name" class="action-label"><b>Project Name</b></label>
+        <input name="projchange" class="fridges" type="text" id="Project Name" required></input>
+        <br>
+        <br>
+        <label for="shelfchange" class="action-label"><b>Shelf</b></label>
+        <select id="shelfchange" class="fridges" name="shelfchange" title="shelf">
+            {% for shelf in shelfData %}
+            <option name="shelf" value="{{ shelf }}">{{shelf}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="rackchange" class="action-label"><b>Rack</b></label>
+        <select id="rackchange" class="fridges" name="rackchange" title="rack">
+            {% for rack in rackData %}
+            <option name="rack" value="{{ rack }}">{{rack}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="Date Taken Out" class="action-label"><b>Date Taken Out</b></label>
+        <input name="datechange" class="fridges" type="text" id="Date Taken Out" value="{{ date }}" required></input>
+
+        <label for="comments" class="action-label"><b>Comments</b></label>
+        <input name="comchange" class="fridges" type="text" id="comments"></input>
+
+        <input class="btn-changes" type="submit" name="savechanges" value="Save changes"></input>
+    </form>
+    <br>
+    <h3>Additional functions</h3>
+    <form action="{{ url_for('downloadcsv', modID = modID) }}" method="post">
+        <button class="btn-modify" type="submit" name="tocsv" id="tocsv"><i class="fa fa-download"></i> CSV</button>
+    </form>
+
+    <form action="{{ url_for('savechanges', modID = modID) }}" method="post">
+        <input class="btn-modify" type="submit" name="setmissing" id="setmissing" value="Mark MISSING"></input>
+    </form>
+
+    <form action="{{ url_for('savechanges', modID = modID) }}" method="post">
+        <input class="btn-modify" type="submit" name="setlowdna" id="setlowdna" value="Mark LOW DNA"></input>
+    </form>
+
+    <form action="{{ url_for('savechanges', modID = modID) }}" method="post">
+        <input class="btn-modify" type="submit" name="setdepleteddna" id="setdepleteddna" value="Mark DEPLETED DNA"></input>
+    </form>
+
+</div>
+<br>
+<br>
+
+{% endblock %}

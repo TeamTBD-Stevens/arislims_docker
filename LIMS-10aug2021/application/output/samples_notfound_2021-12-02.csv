@@ -1,0 +1,8 @@
+id,Progeny_ID,Family_ID,Aliquot_Label,Sample_Type,Fridge_Name,Shelf_No,Rack_Label,Project_Name,Researcher_Name,Date_Taken_Out,Original_Fridge,Original_Shelf,Original_Rack,Original_Drawer,Original_Box,Original_Well,Collection_Date,flag,Low_DNA,comments
+1,C11241,C1124,C11241,Plasma,,,,,,,-80 F Falcon,,,,C3GN 05,A5-A6,6/17/2013,MISSING,NO,
+2,T18631,T1863,T18631,Serum,,,,,,,-80 C Cobra,E,4,,DB TX S1,E3-E4,1/29/2015,MISSING,NO,
+3,T18861,T1886,T18861,Plasma,,,,,,,-80 C Cobra,E,4,,DB TX P2,A1-A2,3/16/2015,MISSING,NO,
+4,A12931,A1293,A12931,Plasma,,,,,,,-80 C Cobra,E,4,3,DB TX P3,G7-G8,3/9/2012,MISSING,NO,
+5,T18591,T1859,T18591,Plasma,,,,,,,-80 C Cobra,E,4,,DB TX P2,H4-H5,1/21/2015,MISSING,NO,
+6,T18631,T1863,T18631,Plasma,,,,,,,-80 C Cobra,E,4,,DB TX P2,B9-B10,1/29/2015,MISSING,NO,
+7,T18871,T1887,T18871,Plasma,,,,,,,-80 C Cobra,E,4,,DB TX P2,A3-A4,3/16/2015,MISSING,NO,

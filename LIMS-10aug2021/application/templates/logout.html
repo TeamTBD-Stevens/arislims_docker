@@ -1,0 +1,12 @@
+
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>You have been logged out</h1>
+            <h3><a href='{{ url_for("login") }}'>Login</a> as another account?</h3>
+        </div>
+    </div>
+
+    {% endblock %}

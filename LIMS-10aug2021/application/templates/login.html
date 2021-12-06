@@ -1,0 +1,37 @@
+    {% extends "layout.html" %}
+   
+    {% block content %}
+    {% if not loggedin %}
+    <h1>Login</h1>
+    
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3></h3>
+            <form name="login" action="{{ url_for('login') }}" method="post">
+                <label for="username" class="login-label"><b>Username</b></label>
+                <input class="login" type="text" placeholder="Enter Username" name="username" required>
+                <br>
+                <label for="password" class="login-label"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+                <font color='red'>{{ msg }}</font>
+                <br class="clear">
+                <input class="btn-submit" type="submit" name="submit" value="Login">
+                
+            </form>
+            <p>New user? <a href='{{ url_for("register") }}'>Register</a></p>
+
+        </div>
+    </div>
+    {% else %}
+    <h1>Account <i class="fa fa-user-circle"></i></h1>
+    <div class="col-md-6 offset-md-3">   
+        <p>
+            Username: {{ user }} <br>
+            First Name: {{ firstname }} <br>
+            Last Name: {{ lastname }} <br>
+            Template CSVs: <a href="static/defaultcsv/default_fullcolumns.csv">Full column list</a>, <a href="static/defaultcsv/default_fewcolumns.csv">just a few columns</a>
+        </p>
+        <p>Log in with another account? <a href='{{ url_for("logout") }}'>Logout</a></p>
+    </div>
+    {% endif %}
+ {% endblock %}

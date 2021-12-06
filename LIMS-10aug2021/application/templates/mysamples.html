@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+    
+{% block content %}
+<h1>My Samples</h1>
+<h3> {{ date }} </h3>
+
+<div>
+    <form action="{{ url_for('mysamples') }}" method="get">
+        <b>Search by: </b>
+        <input class="search" type="text" name="Progeny_ID" placeholder='Progeny ID' value='{{ userInput["Progeny_ID"] }}'>
+        <input class="search" type="text" name="Family_ID" placeholder="Family ID" value='{{ userInput["Family_ID"] }}'>
+        <input class="search" type="text" name="Aliquot_Label" placeholder="Aliquot Label" value='{{ userInput["Aliquot_Label"] }}'>
+        <input class="search" type="text" name="Sample_Type" placeholder="Sample Type" value='{{ userInput["Sample_Type"] }}'>
+        <input class="search" type="text" name="Project_Name" placeholder="Project" value='{{ userInput["Project_Name"] }}'>
+        <input class="search" type="text" name="Date_Taken_Out" placeholder="DTO: yyyy-mm-dd" value='{{ userInput["Date_Taken_Out"] }}'>
+        <br>
+        <label for="Fridge_Name" class="home-label"><b>Filter by storage location</b></label>
+        <select class="fridges" id="Fridge_Name" name="Fridge_Name" value='{{ userInput["Fridge_Name"] }}'>
+            <option name="Fridge_Name" value="">--Any storage location--</option>
+            <!-- Jinja2 for loop was unable to do the equivalence check to get selected to work, so had to manually write out each option and its equivalence check for selected -->
+            <option name="Fridge_Name" value="Albatross 4C" {% if userInput['Fridge_Name']=='Albatross 4C' %} selected {% endif %}>Albatross 4C</option>
+            <option name="Fridge_Name" value="Ant 4C (mini)" {% if userInput['Fridge_Name']=='Ant 4C (mini)' %} selected {% endif %}>Ant 4C (mini)</option>
+            <option name="Fridge_Name" value="Atlas -80C" {% if userInput['Fridge_Name']=='Atlas -80C' %} selected {% endif %}>Atlas -80C</option>
+            <option name="Fridge_Name" value="Barracuda -80C" {% if userInput['Fridge_Name']=='Barracuda -80C' %} selected {% endif %}>Barracuda -80C</option>
+            <option name="Fridge_Name" value="Beetle 4C (mini)" {% if userInput['Fridge_Name']=='Beetle 4C (mini)' %} selected {% endif %}>Beetle 4C (mini)</option>
+            <option name="Fridge_Name" value="Bluebird 4C" {% if userInput['Fridge_Name']=='Bluebird 4C' %} selected {% endif %}>Bluebird 4C</option>
+            <option name="Fridge_Name" value="Chinchilla 4C (mini)" {% if userInput['Fridge_Name']=='Chinchilla 4C (mini)' %} selected {% endif %}>Chinchilla 4C (mini)</option>
+            <option name="Fridge_Name" value="Cobra -80C" {% if userInput['Fridge_Name']=='Cobra -80C' %} selected {% endif %}>Cobra -80C</option>
+            <option name="Fridge_Name" value="Condor 4C" {% if userInput['Fridge_Name']=='Condor 4C' %} selected {% endif %}>Condor 4C</option>
+            <option name="Fridge_Name" value="Coordinator 4C (mini)" {% if userInput['Fridge_Name']=='Coordinator 4C (mini)' %} selected {% endif %}>Coordinator 4C (mini)</option>
+            <option name="Fridge_Name" value="Dingo 4C (mini)" {% if userInput['Fridge_Name']=='Dingo 4C (mini)' %} selected {% endif %}>Dingo 4C (mini)</option>
+            <option name="Fridge_Name" value="Dragon -80C" {% if userInput['Fridge_Name']=='Dragon -80C' %} selected {% endif %}>Dragon -80C</option>
+            <option name="Fridge_Name" value="Duck 4C" {% if userInput['Fridge_Name']=='Duck 4C' %} selected {% endif %}>Duck 4C</option>
+            <option name="Fridge_Name" value="Eagle 4C" {% if userInput['Fridge_Name']=='Eagle 4C' %} selected {% endif %}>Eagle 4C</option>
+            <option name="Fridge_Name" value="Elephant -80C" {% if userInput['Fridge_Name']=='Elephant -80C' %} selected {% endif %}>Elephant -80C</option>
+            <option name="Fridge_Name" value="Emu 4C" {% if userInput['Fridge_Name']=='Emu 4C' %} selected {% endif %}>Emu 4C</option>
+            <option name="Fridge_Name" value="Falcon -80C" {% if userInput['Fridge_Name']=='Falcon -80C' %} selected {% endif %}>Falcon -80C</option>
+            <option name="Fridge_Name" value="Ferret 4C" {% if userInput['Fridge_Name']=='Ferret 4C' %} selected {% endif %}>Ferret 4C</option>
+            <option name="Fridge_Name" value="Fox -20C" {% if userInput['Fridge_Name']=='Fox -20C' %} selected {% endif %}>Fox -20C</option>
+            <option name="Fridge_Name" value="Grizzly -20C" {% if userInput['Fridge_Name']=='Grizzly -20C' %} selected {% endif %}>Grizzly -20C</option>
+            <option name="Fridge_Name" value="Hammerhead -20C (mini)" {% if userInput['Fridge_Name']=='Hammerhead -20C (mini)' %} selected {% endif %}>Hammerhead -20C (mini)</option>
+            <option name="Fridge_Name" value="Iguana 4C (mini)" {% if userInput['Fridge_Name']=='Iguana 4C (mini)' %} selected {% endif %}>Iguana 4C (mini)</option>
+            <option name="Fridge_Name" value="Jaguar -30C" {% if userInput['Fridge_Name']=='Jaguar -30C' %} selected {% endif %}>Jaguar -30C</option>
+            <option name="Fridge_Name" value="-80C" {% if userInput['Fridge_Name']=='-80C' %} selected {% endif %}>All -80C</option>
+            <option name="Fridge_Name" value="-30C" {% if userInput['Fridge_Name']=='-30C' %} selected {% endif %}>All -30C</option>
+            <option name="Fridge_Name" value="-20C" {% if userInput['Fridge_Name']=='-20C' %} selected {% endif %}>All -20C</option>
+            <option name="Fridge_Name" value="4C" {% if userInput['Fridge_Name']=='4C' %} selected {% endif %}>All 4C</option>
+        </select>
+        <br>
+        <label for="samp_age" class="home-label"><b>Filter by collection date</b></label>
+        <select id="samp_age" class="fridges" name="Collection_Int">
+            <option name="samp_age_op1" value="" >--No Filter--</option>
+            <option name="samp_age_op2" value="1" {% if userInput['Collection_Int']=='1' %} selected {% endif %}>Less than a year</option>
+            <option name="samp_age_op3" value="3" {% if userInput['Collection_Int']=='3' %} selected {% endif %}>Less than 3 years</option>
+            <option name="samp_age_op4" value="5" {% if userInput['Collection_Int']=='5' %} selected {% endif %}>Less than 5 years</option>
+        </select>
+        <label for="Collection_Date" class="home-label"><b>or specify collection date</b></label>
+        <input class="search" type="text" name="Collection_Date" placeholder="Collection Date" value='{{ userInput["Collection_Date"] }}'>
+        <button class="btn-submit2" type="submit" name="search">Search <i class="fa fa-search"></i></button>
+        <input id="Progeny_ID" type='submit' class="hidden" name='sorttype' value='Progeny_ID'>
+        <input id="Date_Taken_Out" type='submit' class="hidden" name='sorttype' value='Date_Taken_Out'>
+        <input id="Collection_Date" type='submit' class="hidden" name='sorttype' value='Collection_Date'>
+        <input id="sortorder" type='text' class="hidden" name='sortord' value=" {{ session['sortord'] }}">
+    </form>
+    <br>
+    <form action="{{ url_for('downloadcsv', modID=modID) }}" method="post">
+        <button class="btn-download" type="submit" name="tocsv" id="tocsv"><i class="fa fa-download"></i> CSV</button>
+    </form>
+</div>
+
+<b>Samples</b> <br> Result: {{ numsamp }} entries
+<form action="{{ url_for('savechanges')}}" method="post">
+    <div class="tab2">
+        <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col"><label for="Progeny_ID" name='sorttype' class="col-label">Progeny ID {% if sorttype == 'Progeny_ID' %}{% if sortord == 'ASC' %} <i class="fa fa-caret-up"></i>{% else %} <i class="fa fa-caret-down"></i>{% endif %}{% endif %}</label></th>
+                        <th scope="col">Family ID</th>
+                        <th scope="col">Aliquot Label</th>
+                        <th scope="col">Sample Type</th>
+                        <th scope="col">Storage Location</th>
+                        <th scope="col">Shelf No.</th>
+                        <th scope="col">Rack Label</th>
+                        <th scope="col">Project Name</th>
+                        <th scope="col">Researcher Name</th>
+                        <th scope="col"><label for="Date_Taken_Out" name='sorttype' class='col-label'>Date Taken Out {% if sorttype == 'Date_Taken_Out' %}{% if sortord == 'ASC' %} <i class="fa fa-caret-up"></i>{% else %} <i class="fa fa-caret-down"></i>{% endif %}{% endif %}</label></th>
+                        <th scope="col"><label for="Collection_Date" name='sorttype' class='col-label'>Collection Date {% if sorttype == 'Collection_Date' %}{% if sortord == 'ASC' %} <i class="fa fa-caret-up"></i>{% else %} <i class="fa fa-caret-down"></i>{% endif %}{% endif %}</label></th></th></th>
+                        <th scope="col">Stock Location</th>
+                        <th scope="col">Original Shelf</th>
+                        <th scope="col">Original Rack</th>
+                        <th scope="col">Original Drawer</th>
+                        <th scope="col">Original Box</th>
+                        <th scope="col">Original Well</th>
+                        <th scope="col">Low DNA</th>
+                        <th scope="col">Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for data in samplesData %}
+                    <tr name="row" id='row{{ data["id"] }}' onclick="selectrow(this)">
+                        <td scope='row'>{{ data["Progeny_ID"] }}</td>
+                        <td>{{ data["Family_ID"] }}</td>
+                        <td>{{ data["Aliquot_Label"] }}</td>
+                        <td>{{ data["Sample_Type"] }}</td>
+                        <td>{{ data["Fridge_Name"] }}</td>
+                        <td>{{ data["Shelf_No"] }}</td>
+                        <td>{{ data["Rack_Label"] }}</td>
+                        <td>{{ data["Project_Name"] }}</td>
+                        <td>{{ data["Researcher_Name"] }}</td>
+                        <td>{{ data["Date_Taken_Out"] }}</td>
+                        <td>{% if data["Collection_Date"] != None %} {{ data["Collection_Date"] }} {% endif %}</td>
+                        <td>{% if data["Original_Fridge"] != None %} {{ data["Original_Fridge"] }} {% endif %}</td>
+                        <td>{% if data["Original_Shelf"] != None %} {{ data["Original_Shelf"] }} {% endif %}</td>
+                        <td>{% if data["Original_Rack"] != None %} {{ data["Original_Rack"] }} {% endif %}</td>
+                        <td>{% if data["Original_Drawer"] != None %} {{ data["Original_Drawer"] }} {% endif %}</td>
+                        <td>{% if data["Original_Box"] != None %} {{ data["Original_Box"] }} {% endif %}</td>
+                        <td>{% if data["Original_Well"] != None %} {{ data["Original_Well"] }} {% endif %}</td>
+                        <td>{% if data["Low_DNA"] != None %} {{ data["Low_DNA"] }} {% endif %}</td>
+                        <td title="{{ data['comments'] }}">{% if data["comments"] != None %} {{ data["comments"] }} {% endif %}</td>
+
+                        <td>
+                            <input type="checkbox" class="hidden" name="CHECK" id="check{{ data['id']}}" value="{{ data['id']}}">&nbsp;<br>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    
+    <input class="btn-modify" type="submit" name="return" value="Mark as Returned"></input>
+</form>
+<input class="btn-modify" type="button" name="selectall" onclick='selectall()' value="Select All"></input>
+
+{% endblock %}

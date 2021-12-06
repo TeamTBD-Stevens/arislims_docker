@@ -1,0 +1,12 @@
+
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Changes have been saved</h1>
+            <h3>Please use the navigation buttons to work on another set of samples, or <a href='{{ url_for("login") }}'>Logout</a></h3>
+        </div>
+    </div>
+
+    {% endblock %}

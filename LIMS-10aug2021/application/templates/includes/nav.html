@@ -1,0 +1,20 @@
+<header>
+    <nav>
+        <ul class='nav nav-pills'>
+            <li class='nav-item'><a href='{{ url_for("index") }}' class='nav-link {% if index %} active {% endif %}'>Home <i class="fa fa-home"></i></a></li>
+            {% if loggedin %}
+            <li class='nav-item'><a href='{{ url_for("login") }}' class='nav-link {% if login %} active {% endif %}'>Account <i class="fa fa-user-circle"></i></a></li>
+            <li class='nav-item'><a href='{{ url_for("samples") }}' class='nav-link {% if samples %} active {% endif %}'>Samples</a></li>
+            <li class='nav-item'><a href='{{ url_for("mysamples") }}' class='nav-link {% if mysamples %} active {% endif %}'>My Samples</a></li>
+            {% if admin %}
+            <li class='nav-item'><a href='{{ url_for("missing") }}' class='nav-link {% if missing %} active {% endif %}'>Missing Sample Management</a></li>
+            <li class='nav-item'><a href='{{ url_for("updatelims") }}' class='nav-link {% if updatelims %} active {% endif %}'>Update LIMS <i class="fa fa-database"></i></a></li>
+            {% endif %}
+            <li class='nav-item'><a href='https://docs.google.com/presentation/d/18fHw6SpLOznxs3YB6RLeEzBQRKQNy5_6Nr56J95Nw-U/edit?usp=sharing' target="_blank" class='nav-link'>User Guide</a></li>
+            {% else %}
+            <li class='nav-item'><a href='{{ url_for("login") }}' class='nav-link {% if login %} active {% endif %}'>Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <hr style='clear:both'>
+</header>

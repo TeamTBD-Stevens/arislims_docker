@@ -1,0 +1,366 @@
+* {
+    box-sizing: border-box;
+}
+
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 100%;
+    position: relative;
+    margin:0px;
+    color: #204c94;
+    padding-bottom: 40px;
+}
+
+.container {
+    max-width: 2000px;
+}
+
+header {
+    text-align: center;
+}
+
+.nav-link {
+    background-color: #f7f7f7;
+}
+
+.nav-link:active {
+    background-color: white;
+}
+
+.nav-link:hover {
+    background-color: rgba(100,149,237,0.76);
+}
+
+table {
+    text-indent: initial;
+}
+
+th {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0px;
+    z-index: 2;
+    background-color: #f7f7f7;
+    border-bottom-width: 2px;
+    border-bottom: black;
+
+}
+
+.tab2 td {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tab {
+    float: right;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 75%;
+    max-width: 2000px;
+    height: 600px;
+    overflow: scroll;
+}
+
+.tab2 {
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    height: 700px;
+    overflow: scroll;
+    width: 100%;
+    
+}
+
+li {
+    display: inline;
+    padding: 5px;
+}
+
+a {
+    color: blue;
+}
+
+a:hover {
+    color : purple;
+    text-decoration: underline;
+}
+
+a2 {
+    color: #204c94;
+}
+
+a2:hover {
+    color : purple;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+hr {
+    width: 100%;
+    height:4px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: linear-gradient(to right,#204c94,rgba(0,0,0,0));
+    border: 0 none;
+}
+
+tr {
+    transition: color 0.3s;
+}
+
+tr:hover {
+    transition: background-color 0.2s;
+}
+
+.tab2 tbody>tr:hover {
+    cursor: pointer;
+}
+
+label {
+    margin-left: 20px;
+    display: inline;
+}
+
+.action-label {
+    display: block;
+    padding-left: 10px;
+    margin-top: 10px;
+    width: 20%;
+    max-width: 200px;
+    background-image: linear-gradient(to right, #204c94,rgba(0,0,0,0));
+    color: white;
+}
+
+.home-label {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 0px;
+    width: 20%;
+    max-width: 200px;
+    margin-bottom: 0px;
+}
+
+.col-label {
+    display: inline-block;
+    margin-left: 0px;
+    padding-left: 0px;
+    border-left: 0px;
+}
+
+.col-label:focus {
+    color: black;
+}
+
+.sout-tab {
+    display:inline-block;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    width: 25%;
+    max-width: 250px;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.mess-tab {
+    display:inline-block;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 74.5%;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.message-box {
+    padding-top: 40px;
+}
+
+.message-subject {
+    margin-left: 10px;
+    margin-bottom: 2px;
+    width:40%;
+    display: block;
+}
+.message-body {
+    margin-left: 10px;
+    resize: none;
+    width: 40%;
+}
+
+.search {
+    width: 11%;
+    max-width: 150px;
+    margin-bottom: 10px;
+}
+
+.searchdrop {
+    width: 11%;
+    max-width: 150px;
+    height: 30px;
+    border: 1px 1px 1px 1px;
+    padding: 2px 2px 2px 2px;
+    margin-bottom: 10px;
+
+}
+
+.checkmark {
+    color: green;
+}
+
+.change {
+    width: 25%;
+    padding: 5px;
+    margin: 0px 2px 22px 2px;
+    display: inline;
+    background: #f1f1f1;
+}
+
+.login-label {
+    display: block;
+}
+
+.login, input[type=password] {
+    width: 50%;
+    padding: 5px;
+    margin: 1px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+.login:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.fridges {
+    width: 20%;
+    max-width: 150px;
+    padding: 5px;
+    margin: 0px 50px 12px 20px;
+    display: inline-block;
+    background: #f1f1f1;
+}
+
+.top-container {
+    background:#204c94;
+    overflow: hidden;
+}
+.bottom-container {
+    background: #333;
+    padding:2px;
+    border-top:2px solid #0f0f0f;
+    position:fixed;
+    bottom:0;
+}
+
+.hidden {
+    display: none;
+}
+
+.container-term {
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+footer {
+    text-align: center;
+    font-size: 10px;
+    height: 15px;
+    color: white;
+    padding: 0px;
+    margin-top: 0px;
+    bottom: 0px;
+}
+
+.btn-submit {
+    background-color: #204c94;
+    margin: 10px 10px;
+    color: white;
+    display: inline;
+    width: 134px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.btn-submit:hover {
+    opacity: 1;
+}
+
+.btn-submit2 {
+    background-color: #204c94;
+    margin: 10px 10px;
+    color: white;
+    display: block;
+    width: 10%;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.btn-modify {
+    background-color: #1c4f91;
+    color: white;
+    float: right;
+    padding: 5px 10px;
+    margin: 8px;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    opacity: 0.9;
+    text-align: center;
+}
+
+.btn-download {
+    background-color: #1c4f91;
+    color: white;
+    float: right;
+    padding: 5px 10px;
+    margin: 8px;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    opacity: 0.9;
+    text-align: center;
+}
+
+.btn-modify:hover {
+    opacity: 1;
+}
+
+.btn-add {
+    background-color: #204c94;
+    color: white;
+    float: right;
+    padding: 5px 10px;
+    margin: 8px;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+    opacity: 0.9;
+    text-align: center;
+}
+
+.btn-changes {
+    background-color: #1c4f91;
+    color: white;
+    padding: 5px 10px;
+    margin: 8px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    text-align: center;
+}
+
+#infile {
+    padding-left: 10px;
+}

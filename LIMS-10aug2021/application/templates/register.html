@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+   
+{% block content %}
+<h1>Register</h1>
+
+{% if not loggedin %}
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3></h3>
+            <form name="register" action="{{ url_for('register') }}" method="post">
+                <label for="username" class="login-label"><b>New username</b></label>
+                <input class="login" type="text" placeholder="Enter Username" name="username" required>
+                <br>
+                <label for="password" class="login-label"><b>New password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+                <font color='red'>{{ msg }}</font>
+                <label for="firstname" class="login-label"><b>First Name</b></label>
+                <input class="login" type="text" placeholder="Enter first name" name="firstname" required>
+                <br>
+                <label for="lastname" class="login-label"><b>Last Name</b></label>
+                <input class="login" type="text" placeholder="Enter last name" name="lastname" required>
+                <br>
+                <input type="checkbox" name="admincheck" value="True">Admin?
+                <br class="clear">
+                <input class="btn-submit" type="submit" name="submit" value="Register">
+            </form>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,102 @@
+
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1><i class="fa fa-home"></i> Welcome{% if loggedin %}, {{ firstname }} {% endif %}</h1>
+            {% if loggedin %}
+            <h3>{{ date }}</h3>
+            {% else %}
+            <p><a href='{{ url_for("login") }}'>Login</a> to continue</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <br>
+    {% if loggedin %}
+    <div class="mess-tab" id="mess-tab">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Author</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Date</th>
+                    {% if session['usertype']=='ADMIN' %}
+                    <th scope="col">Mark as resolved?</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for message in messagesData %}
+                <tr>
+                    <td scope='row'>{{ message["author"] }}</td>
+                    <td>
+                        <b>[{{ message["flag"]}}] {{ message["subject"] }}</b>
+                        <br>
+                        {{ message["message"] }}
+                    </td>
+                    <td>{{ message["date"] }}</td>
+                    {% if session['usertype']=='ADMIN' %}
+                        {% if message["flag"]!='resolved' %}
+                        <form action="{{ url_for('index') }}" method="post">
+                            <td>
+                                <input type="hidden" name="markresolved" value="{{message['id']}}">
+                                <input type="submit" class="checkmark" name="resolved" value="     ">                            
+                            </td>
+                        </form>
+                        {% else %}
+                        <td><i class="fa fa-check"></i></td>
+                        {% endif %}
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <b></b>
+
+    {% if session['usertype']=='ADMIN' %}
+    <div class="sout-tab" id="sout-tab">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Researcher Name</th>
+                    <th scope="col">Number of samples</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for data in samplesData %}
+                <tr>
+                    <td scope='row'>{{ data["Researcher_Name"] }}</td>
+                    <td>{{ data["COUNT(Researcher_Name)"] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    <div class="message-box">
+        
+        <form action="{{ url_for('index') }}" method="post">
+            <b>Create a new message</b>
+            <input type="text" class="message-subject" name="message-subject" placeholder="Subject" required>
+            <textarea class="message-body" name="message-body" rows="4" cols="25" placeholder="Enter a message" required></textarea>
+            <br>
+            <label for="flag">Set Flag:</label>
+            <select id="flag" class="flag" name="flag" title="flag" required>
+                <option name="flag1" value="General">General</option>
+                <option name="flag2" value="IMPORTANT">IMPORTANT</option>
+                <option name="flag3" value="MISSING">MISSING</option>
+            </select>
+            <br>
+            <input type="submit" class="btn-submit" value="Submit">
+
+        </form>
+    </div>
+    {% endif %}
+    {% endblock %}
